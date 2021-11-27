@@ -3,6 +3,7 @@ pipeline {
 
     tools {
         maven '3.8.4'
+        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
     }
 
     stages {
@@ -29,7 +30,7 @@ pipeline {
         }
         stage('BuildImage') {
             steps {
-                docker.build('demojar:latest')
+                sh "docker build --build-arg JAR_FILE=build/*.jar -t demojar:latest ."
             }
         }
     }
