@@ -3,7 +3,6 @@ pipeline {
 
     tools {
         maven '3.8.4'
-        docker 'latest'
     }
 
     stages {
@@ -30,7 +29,7 @@ pipeline {
         }
         stage('BuildImage') {
             steps {
-                sh "docker build --build-arg JAR_FILE=build/*.jar -t demojar:latest ."
+                docker.build('demojar:latest')
             }
         }
     }
