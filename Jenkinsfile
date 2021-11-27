@@ -1,10 +1,15 @@
 pipeline {
     agent any
 
+    tools {
+        maven '3.8.4'
+    }
+
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                sh "mvn clean package"
+                sh "printenv"
             }
         }
     }
