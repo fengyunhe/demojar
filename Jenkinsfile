@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'myjenkins-agent:latest'
+            image '192.168.199.17:5000/myjenkins-agent:latest'
         }
     }
 
