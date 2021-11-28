@@ -1,9 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'jenkins/ssh-agent:latest'
+        }
+    }
 
     tools {
+        git 'Default'
+        dockerTool 'latest'
         maven '3.8.4'
-        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'latest'
+        jdk 'jdk8'
     }
 
     stages {
@@ -30,7 +36,7 @@ pipeline {
         }
         stage('BuildImage') {
             steps {
-                sh "docker build --build-arg JAR_FILE=build/*.jar -t demojar:latest ."
+                sh "docker build --build-arg JAR_FILE=target/demojar-0.0.1-SNAPSHOT.jar -t demojar:latest ."
             }
         }
     }
