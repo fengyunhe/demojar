@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image '192.168.199.17:5000/myjenkins-agent:latest'
-        }
-    }
+    agent any
 
     tools {
         maven '3.8.4'
