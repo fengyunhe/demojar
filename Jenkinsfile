@@ -31,9 +31,9 @@ pipeline {
         }
         stage('BuildImage') {
             steps {
-                sh "docker build --build-arg JAR_FILE=target/demojar-0.0.1-SNAPSHOT.jar -t demojar:latest ."
-                sh "docker tag demojar:latest 192.168.199.17:5000/demojar:latest"
-                sh "docker push 192.168.199.17:5000/demojar:latest"
+                sh "docker -H tcp://192.168.199.17:2375 build --build-arg JAR_FILE=target/demojar-0.0.1-SNAPSHOT.jar -t demojar:latest ."
+                sh "docker -H tcp://192.168.199.17:2375 tag demojar:latest 192.168.199.17:5000/demojar:latest"
+                sh "docker -H tcp://192.168.199.17:2375 push 192.168.199.17:5000/demojar:latest"
             }
         }
     }
