@@ -3,8 +3,8 @@ pipeline {
 
     tools {
         dockerTool 'latest'
-        maven '3.8.4'
-        jdk 'jdk8'
+        maven 'CI_TOOLS_MAVEN_3'
+        jdk 'CI_TOOLS_JDK8'
     }
 
     stages {
