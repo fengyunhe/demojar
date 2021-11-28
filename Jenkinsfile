@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        dockerTool 'latest'
+        dockerTool 'CI_TOOLS_DOCKER'
         maven 'CI_TOOLS_MAVEN_3'
         jdk 'CI_TOOLS_JDK8'
     }
